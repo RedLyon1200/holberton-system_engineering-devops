@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# script that displays Holberton School 10 times usig until loop
+
+COUNT=10
+until [  $COUNT -lt 1 ]; do
+    echo Holberton School
+    let COUNT-=1
+done
