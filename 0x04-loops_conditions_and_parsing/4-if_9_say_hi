@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# script that displays Holberton School 10 times usig while loop but for the 9th iteration, displays Holberton School and then Hi on a new line
+
+COUNT=0
+while [ $COUNT -lt 10 ]; do
+    echo Holberton School
+    if [ "$COUNT" == 8 ]; then
+        echo Hi
+    fi
+    let COUNT=COUNT+1 
+done
