@@ -8,7 +8,7 @@
 
 FILE="/var/run/holbertonscript.pid"
 sudo touch $FILE
-sudo echo $$ > $FILE
+echo $$ > $FILE
 
 while true
 do
