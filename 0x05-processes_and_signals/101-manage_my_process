@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 
+# manage my process
 FILE="/var/run/my_process.pid"
 OPT=$1
 
@@ -9,25 +9,18 @@ create_file()
     sudo bash -c "echo $$ > $FILE"
 }
 
-kill_pid()
-{
-    kill "$(pgrep -a -x bash | grep ./101-manage_my_process | cut -d' ' -f1)"
-}
-
 if [ "$OPT" == "start" ]; then
     create_file
     ./manage_my_process &
     echo "manage_my_process started"
 
 elif [ "$OPT" == "restart" ]; then
-    kill_pid
     sudo rm $FILE
     create_file
     ./manage_my_process &
     echo "manage_my_process restarted"
 
 elif [ "$OPT" == "stop" ]; then
-    kill_pid
     sudo rm $FILE
     echo "manage_my_process stopped"
 
