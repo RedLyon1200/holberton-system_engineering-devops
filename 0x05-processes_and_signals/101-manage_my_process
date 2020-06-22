@@ -20,12 +20,14 @@ if [ "$OPT" == "start" ]; then
     echo "manage_my_process started"
 
 elif [ "$OPT" == "restart" ]; then
+    kill_pid
     sudo rm $FILE
     create_file
     ./manage_my_process &
     echo "manage_my_process restarted"
 
 elif [ "$OPT" == "stop" ]; then
+    kill_pid
     sudo rm $FILE
     echo "manage_my_process stopped"
 
