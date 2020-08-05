@@ -2,7 +2,7 @@
 # bash script that configure your Nginx server so that /redirect_me is redirecting to another page
 apt-get -y update
 apt-get -y install nginx
-echo 'Holberton School' | tee /var/www/html/index.html
+echo 'Holberton School' > /var/www/html/index.html
 
 # Backup
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup
@@ -10,7 +10,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.ba
 redirect="\n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t}\n"
 sed -i "37i\ $redirect" /etc/nginx/sites-available/default
 
-echo "Ceci n'est pas une page" | tee /usr/share/nginx/html/custom_404.html
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
 
 error404='/listen 80 default_server/a error_page 404 /custom_404.html; location = /custom_404.html {root /usr/share/nginx/html;\n internal;}'
 
