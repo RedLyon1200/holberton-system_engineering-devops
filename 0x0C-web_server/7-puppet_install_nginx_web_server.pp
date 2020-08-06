@@ -1,9 +1,9 @@
-# Install Nginx web server (w/ Puppet) 
+# Install Nginx web server (w/ Puppet)
 package { 'nginx':
   ensure => installed,
 }
 
-file_line { 'holberton_school':
+file_line { 'holbie':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
   after  => 'listen 80 default_server;',
