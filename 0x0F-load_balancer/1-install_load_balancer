@@ -20,6 +20,6 @@ backend http_back\n
     \tserver [1639]-web-02 34.75.203.83\n
 "
 
-echo -e $cfg | tee /etc/haproxy/haproxy.cfg
+echo -e "$cfg" | tee /etc/haproxy/haproxy.cfg
 
 service haproxy restart
