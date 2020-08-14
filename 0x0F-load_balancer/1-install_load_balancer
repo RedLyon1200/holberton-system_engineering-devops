@@ -14,7 +14,7 @@ cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.Backup 2> /dev/null
 
 # Config
 cfg="\n
-fronted http_front
+frontend http_front
     \tbind *:80
     \tmode http
     \tdefault_backend http_back\n
