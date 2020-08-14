@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 # Configure HAproxy with version equal or greater than 1.5 so that it send traffic to web-01 and web-02
 
+# install haproxy 1.8
 apt-get -y install software-properties-common
-add-apt-repository -y ppa:vbernat/haproxy-2.0
-
+add-apt-repository -y ppa:vbernat/haproxy-1.8
 apt-get -y update
-apt-get -y install haproxy=2.0.\*
-
-service haproxy start
+apt-get -y install haproxy=1.8.\*
 
 # Backup
 cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.Backup 2> /dev/null
@@ -22,10 +20,10 @@ frontend http_front
 backend http_back
     \tbalance roundrobin
     \toption forwardfor
-    \tserver 1639-web-01 35.231.223.17 check
-    \tserver 1639-web-02 34.75.203.83 check\n
+    \tserver 1639-web-01 35.231.223.17:80 check
+    \tserver 1639-web-02 34.75.203.83:80 check\n
 "
 
 echo -e "$cfg" >> /etc/haproxy/haproxy.cfg
 
-service haproxy restart
+service haproxy start
