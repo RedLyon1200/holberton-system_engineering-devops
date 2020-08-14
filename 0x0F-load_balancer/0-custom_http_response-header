@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+apt-get -y update
+apt-get -y install nginx
+
+# Backup
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.backup
+
+add_header='/listen 80 default_server/a     add_header X-Served-By $HOSTNAME;'
+
+sed -i "$add_header" /etc/nginx/sites-available/default
+service nginx restart
