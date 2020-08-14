@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# --
+apt-get -y update
+apt-get -y install haproxy
+
+service haproxy start
+
+# Backup
+cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.Backup
+
+# Config
+cfg="
+fronted http_front\n
+    \tbind *:80\n
+    \tdefault_backend http_back\n\n
+
+backend http_back\n
+    \tbalance roundrobin\n
+    \tserver [1639]-web-01 35.231.223.17\n
+    \tserver [1639]-web-02 34.75.203.83\n
+"
+
+echo -e $cfg | tee /etc/haproxy/haproxy.cfg
+
+service haproxy restart
