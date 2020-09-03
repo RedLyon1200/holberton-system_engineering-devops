@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# mysql backup
+filename=$(date +"%d-%m-%Y")
+
+function backup {
+    # Create the database backup SQL in a dump
+    mysqldump -uroot -password"$1" --all-databases > backup.sql
+    # Packages the backup dump into a .tar.gz
+    sudo tar -czvf "$filename".tar.gz backup.sql
+}
+
+if [ $# -eq 1 ]; then
+    backup "$@"
+else
+    echo -e "Over or under arguments were given in execution\nUsage: 5-mysql_backup db_pwd"
+fi
