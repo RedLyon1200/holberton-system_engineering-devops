@@ -24,7 +24,7 @@ def get_employee(id):
     tasks_user = [task for task in all_tasks if task.get('userId') == id]
 
     """ Creates a file with employedd id by file name """
-    with open('{}.csv'.format(id), mode='w') as file:
+    with open('{}.csv'.format(id), mode='w', encoding='UTF-8') as file:
         data = csv.writer(
             file,
             delimiter=',',
