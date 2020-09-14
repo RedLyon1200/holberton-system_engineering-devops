@@ -8,20 +8,15 @@ import requests
 def get_employee(id):
     """ Get employe by id from API """
     user_data = requests.get(
-        'https://jsonplaceholder.typicode.com/users/{}'.format(id)
+        'https://jsonplaceholder.typicode.com/users/', params={'id': id}
     ).json()
 
-    name = user_data.get('name')
-    if not name:
-        return
-
-    """Get all the tasks -*- TODOS"""
-    all_tasks = requests.get(
-        'https://jsonplaceholder.typicode.com/todos/'
-    ).json()
+    username = user_data[0].get('username')
 
     """Records all tasks that are owned by this employee"""
-    tasks_user = [task for task in all_tasks if task.get('userId') == id]
+    tasks_user = requests.get(
+        'https://jsonplaceholder.typicode.com/todos/', params={'userId': id}
+    ).json()
 
     """ Generate data response in a list"""
     response = []
@@ -29,7 +24,7 @@ def get_employee(id):
         data = {
             'task': task.get('title'),
             'completed': task.get('completed'),
-            'username': name
+            'username': username
         }
         response.append(data)
 
