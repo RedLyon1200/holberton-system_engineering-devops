@@ -30,7 +30,7 @@ def get_employee(id):
 
     print(response)
     for task in tasks_done:
-        print('\t{}'.format(task.get('title')))
+        print('\t {}'.format(task.get('title')))
 
 
 if __name__ == "__main__":
