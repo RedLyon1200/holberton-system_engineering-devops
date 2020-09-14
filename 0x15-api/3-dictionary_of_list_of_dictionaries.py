@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """ -*- Coding UTF-8 -*- """
-import requests
 from sys import argv
-from pprint import pprint
 import json
+import requests
 
 
 def get_employee(id):
