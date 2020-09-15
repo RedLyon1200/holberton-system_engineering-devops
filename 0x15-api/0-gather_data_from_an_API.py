@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ -*- Coding UTF-8 -*- """
-from sys import argv
 import requests
+from sys import argv
 
 
 def get_employee(id):
