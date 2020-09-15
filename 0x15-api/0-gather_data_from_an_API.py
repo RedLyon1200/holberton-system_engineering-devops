@@ -33,4 +33,5 @@ def get_employee(id):
 
 
 if __name__ == "__main__":
-    get_employee(int(argv[1]))
+    if argv[1].isdigit():
+        get_employee(int(argv[1]))
