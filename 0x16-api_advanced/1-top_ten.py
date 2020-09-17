@@ -5,7 +5,6 @@ first 10 hot posts listed for a given subreddit.
 """
 
 import requests
-from pprint import pprint
 
 
 def top_ten(subreddit):
